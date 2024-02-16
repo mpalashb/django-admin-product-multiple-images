@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+<!--  -->
+{% load static %}
+{% comment %}  {% endcomment %}
+
+{% block container %}
+<div class="container">
+  <h2>Products</h2>
+  {% for product in object_list %}
+  <div class="product">
+    <h2>{{ product.title }}</h2>
+    <p>Description: {{ product.description }}</p>
+    <p>Price: ${{ product.price }}</p>
+    {% if product.thumbnail %}
+    <img
+      src="{{ product.thumbnail.url }}"
+      alt="{{ product.title }} Thumbnail"
+    />
+    {% endif %}
+    <div class="product-images">
+      {% for image in product.all_images.all %}
+      <img src="{{ image.image.url }}" alt="{{ product.title }} Image" />
+      {% endfor %}
+    </div>
+  </div>
+  {% endfor %}
+</div>
+
+{% endblock container %}

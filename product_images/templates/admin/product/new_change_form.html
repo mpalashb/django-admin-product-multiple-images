@@ -1,0 +1,29 @@
+{% extends "admin/change_form.html" %}
+{% comment %}  {% endcomment %}
+{% load static %}
+{% comment %}  {% endcomment %}
+<!--  -->
+{% block field_sets %}
+<!--  -->
+{% for fieldset in adminform %}
+  <!--  -->
+  {% include "admin/includes/fieldset.html" %}
+
+{% endfor %}
+{% comment %}  {% endcomment %}
+<div class="product-image-container">
+  <h2>Images</h2>
+  <div class="image-upload">
+    <input type="file" name="images" accept="image/*" id="id_images" multiple=True></p>
+  </div>
+  <div class="image-grid">
+    {% for product_image in all_images %}
+      <div class="image-item">
+        <img src="{{ product_image.image.url }}" alt="Product Image">
+      </div>
+    {% endfor %}
+  </div>
+</div>
+{% comment %}  {% endcomment %}
+<!--  -->
+{% endblock %}
